@@ -1,0 +1,33 @@
+.topbar{
+    width: 100%;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    border-bottom:1px solid tomato;
+}
+
+.topbarWrapper{
+    padding:15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    font-weight: bold;
+    font-size: 20px;
+    color: tomato;
+}
+
+/* .topLeft{
+    flex:1;
+}
+
+.topRight{
+    flex:4;
+} */
+
+.levelUser{
+    margin-left: 10px;
+}

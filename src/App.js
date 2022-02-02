@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { BrowserRouter } from "react-router-dom"
+import Content from './template/content/Content'
+import Topbar from './template/header/Topbar'
+import Sidebar from './template/sidebar/Sidebar'
+import Login from './pages/login/Login'
+import { expiredStorage } from './util/expiredStorage'
 
 function App() {
+  if (expiredStorage.getItem("token") === "" || expiredStorage.getItem("token") === null) return <Login/>
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Topbar />
+        <div className="wrapper text-sm">
+          <Sidebar />
+          <Content />
+
+        </div>
+
+      </BrowserRouter>
+
+    </>
   );
 }
 

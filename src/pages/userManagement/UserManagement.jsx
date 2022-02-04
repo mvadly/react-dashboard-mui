@@ -1,40 +1,25 @@
 
-import { Button, Grid, Avatar } from '@mui/material';
+import { Grid, Avatar } from '@mui/material';
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Title, Body, Pagination } from '../../components/Content'
-import AddUserManagement from './Add';
 import GroupIcon from '@mui/icons-material/Group';
-import { expiredStorage } from '../../util/expiredStorage';
+import { deleteUser, getUsers } from '../../services/user';
 
-
-const axios = require('axios');
 const UserManagement = () => {
     const [data, setData] = useState([])
-    const [form, setForm] = useState("")
-    const [addForm, setAddForm] = useState("")
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
     const [dataPage, setDataPage] = useState(6)
-
-    const getDataUser = async () => {
-        setLoading(true)
-        try {
-            const response = await axios.get(`${process.env.REACT_APP_APIURL}/v1/users`, {
-                headers: {
-                    "Authorization": "Bearer " + expiredStorage.getItem("token"),
-                    'Content-Type': 'application/json'
-                }
-            });
-            setData(response.data.result);
-        } catch (error) {
-            console.error(error);
-        }
-        setLoading(false)
-    }
+    document.title = "User Management"
 
     useEffect(() => {
-        getDataUser()
+        setLoading(true)
+        getUsers().then(function(res){
+            setData(res.data.result)
+        })
+        setLoading(false)
+
     }, [])
 
     const indexOfLastData = currentPage * dataPage
@@ -43,26 +28,15 @@ const UserManagement = () => {
 
     const paginate = (pageNumber) => { setCurrentPage(pageNumber) }
 
-    async function deleteUser(id) {
-        try {
-            await axios.delete(`${process.env.REACT_APP_APIURL}/v1/users/` + id, {
-                headers: {
-                    "Authorization": "Bearer " + expiredStorage.getItem("token"),
-                    'Content-Type': 'application/json'
-                }
-            });
-            setLoading(false)
-            window.location.reload()
-        } catch (error) {
-            console.error(error);
-            setLoading(false)
-        }
+    function _delete(id) {
+        deleteUser(id).then(function(res){
+            console.log(res)
+        })
     }
 
     return (
         <>
-            <Title icon={<GroupIcon />} title={"User Management " + addForm} />
-            <div>{form}</div>
+            <Title icon={<GroupIcon />} title={"User Management"} />
             <Body content={
                 <div className="p-3">
                     <Link to="/users/add" className="bg-green-500 text-white px-3 py-2 rounded-lg hover:bg-green-600 hover:font-bold" >Add Data</Link><br /><br />
@@ -97,7 +71,7 @@ const UserManagement = () => {
                                                 <a
                                                     href="#!"
                                                     className="text-red-500 "
-                                                    onClick={() => deleteUser(index.id)}
+                                                    onClick={() => _delete(index.id)}
                                                 >Delete</a>
                                             </div>
                                         </div>

@@ -1,3 +1,29 @@
-.wrapper{
-  display: flex;
+@font-face {
+  font-family: 'AvenirNext';
+  src: local('AvenirNext'), url(./fonts/AvenirNextLTPro-Regular.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'AvenirNext';
+    font-weight: 700;
+    src: local('AvenirNext'), url(./fonts/AvenirNextLTPro-Bold.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'AvenirNext';
+    font-weight: 900;
+    src: local('AvenirNext'), url(./fonts/AvenirNextLTPro-Bold.otf) format('opentype');
+}
+
+*{
+  font-family: AvenirNext, Arial, serif !important;
+}
+
+body{
+  background-color:#E5E5E5;
+}
+
+.flex-items-center{
+  display:flex;
+  align-items:center;
 }

@@ -1,10 +1,8 @@
 .topbar{
     width: 100%;
-    background-color: white;
     position: sticky;
     top: 0;
     z-index: 999;
-    border-bottom:1px solid tomato;
 }
 
 .topbarWrapper{
@@ -17,7 +15,6 @@
 .logo{
     font-weight: bold;
     font-size: 20px;
-    color: tomato;
 }
 
 /* .topLeft{

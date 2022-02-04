@@ -1,6 +1,7 @@
 import { Grid } from "@mui/material"
 
 const Dashboard = () => {
+    document.title = "Dashboard"
     return (
         <div className="Dashboard">
             <h4>Dashboard</h4>

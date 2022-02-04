@@ -3,12 +3,13 @@ import Grid from '@mui/material/Grid'
 import { TextField } from "@mui/material"
 import LoadingButton from '@mui/lab/LoadingButton';
 import SaveIcon from '@mui/icons-material/Save';
-import { Body } from "../../components/Content"
+import GroupIcon from '@mui/icons-material/Group';
+import { Body, Title } from "../../components/Content"
 import { useNavigate, useParams } from 'react-router-dom'
 
 const axios = require('axios');
 
-const Add = ({fullnameF, usernameF }) => {
+const Add = ({ fullnameF, usernameF }) => {
     const [loading, setLoading] = useState(false)
     const [fullname, setFullname] = useState(fullnameF !== "" ? fullnameF : "")
     const [username, setUsername] = useState(usernameF !== "" ? usernameF : "")
@@ -58,6 +59,7 @@ const Add = ({fullnameF, usernameF }) => {
 
     return (
         <>
+            <Title icon={<GroupIcon />} title={"User Management / Add"} />
             <Body content={
                 <div className="p-3">
                     <Grid container spacing={3}>
@@ -72,6 +74,7 @@ const Add = ({fullnameF, usernameF }) => {
                                 value={fullname}
                                 onChange={(e) => setFullname(e.target.value)} />
                         </Grid>
+                        
                         <Grid item xs={12} md={5}>
                             <TextField
                                 fullWidth

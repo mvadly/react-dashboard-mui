@@ -34,7 +34,7 @@ const Step1 = () => {
     }, [])
 
     return (
-        <div className="mx-3 mt-12">
+        <div className="mx-3 w-full">
             <div className="text-4xl font-bold mb-4">Daftarkan Akun Anda</div>
             <p className="text-sm">Silahkan masukan Nomor Rekening Giro Anda</p>
             <form className="flex flex-col gap-4 my-8" onSubmit={handleRegister} method="post">

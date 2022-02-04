@@ -39,7 +39,7 @@ const Step3 = () => {
     }, [])
 
     return (
-        <div className="mx-3 mt-4">
+        <div className="mx-3 w-full mt-20">
             <div className="text-4xl font-bold mb-4">Daftarkan Email Anda</div>
             <p className="text-sm">Silahkan masukkan email akun perusahaan</p>
             <form className="flex flex-col gap-3 my-6" onSubmit={handleRegister} method="post">

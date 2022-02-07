@@ -1,9 +1,10 @@
-import { TextField } from '@mui/material';
+import { TextField, InputAdornment, IconButton } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { updateCompany } from '../../../reducer/registerStepSlice';
-import { inArray } from '../../../util/helper';
+import DoneAllRoundedIcon from '@mui/icons-material/DoneAllRounded';
+
 
 const Step2 = () => {
     const [companyName, setCompanyName] = useState("")
@@ -23,7 +24,7 @@ const Step2 = () => {
 
     const handleChange = () => {
         setIsCompany(true)
-        
+
     }
 
     useEffect(() => {
@@ -31,7 +32,7 @@ const Step2 = () => {
         if (!data.giroOK) {
             navigate("/register")
         }
-        
+
     }, [])
 
     return (
@@ -47,6 +48,14 @@ const Step2 = () => {
                     className="bg-white border-0 rounded-md"
                     variant="filled"
                     disabled={true}
+
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                {data.giroOK ? <DoneAllRoundedIcon className=" text-green-500" /> : ""}
+                            </InputAdornment>
+                        ),
+                    }}
                 />
 
                 <TextField

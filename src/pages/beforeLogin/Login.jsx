@@ -1,11 +1,13 @@
-import { TextField, Alert, Button } from "@mui/material";
+import { TextField, Alert, Button, InputAdornment, IconButton } from "@mui/material";
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useState } from "react";
 import { expiredStorage } from "../../util/expiredStorage";
 import { Link } from "react-router-dom"
 import { authLogin } from "../../services/login";
+import { PasswordOutlined, Visibility, VisibilityOff } from "@mui/icons-material";
 
 const Login = () => {
+    document.title = "Login"
     const [loading, setLoading] = useState(false)
     const [isError, setIsError] = useState(false)
     const [alertDialog, setAlertDialog] = useState("")
@@ -13,6 +15,7 @@ const Login = () => {
         username: "",
         password: ""
     })
+    const [vpass, setVpass] = useState(false)
 
     const handleLogin = (event) => {
         event.preventDefault()
@@ -52,7 +55,7 @@ const Login = () => {
 
                 <TextField
                     fullWidth label="Password"
-                    type="password"
+                    type={!vpass ? "password" : "text"}
                     variant="outlined"
                     size="small"
                     value={user.password}
@@ -61,6 +64,15 @@ const Login = () => {
                     onChange={(e) => setUser({ ...user, password: e.target.value })}
                     disabled={loading ? true : false}
                     error={isError ? true : false}
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton onClick={() => !vpass ? setVpass(true) : setVpass(false)}>
+                                    {!vpass ? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                            </InputAdornment>
+                        ),
+                    }}
                 />
 
                 <Link to="/forgot_password" className="text-right text-sm text-white hover:text-slate-300">Lupa Password</Link>

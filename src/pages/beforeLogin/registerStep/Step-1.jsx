@@ -46,8 +46,8 @@ const Step1 = () => {
                     className="bg-white border-0 rounded-md"
                     variant="filled"
                     onChange={(e) => setNorekGiro(e.target.value)}
-                    error={norekGiro === ""}
-                    helperText={norekGiro === "" ? "Required." : ""}
+                    // error={norekGiro === ""}
+                    // helperText={norekGiro === "" ? "Required." : ""}
                 />
 
                 <button

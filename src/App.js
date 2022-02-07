@@ -1,11 +1,9 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Content from './template/content/Content'
-import Topbar from './template/header/Topbar'
-import Sidebar from './template/sidebar/Sidebar'
 import Login from './pages/beforeLogin/Login'
 import { expiredStorage } from './util/expiredStorage'
-import Sidenav from './template/sidebar/Sidenav'
+import Sidenav from './template/sidebar'
 import BeforeLogin from './template/content/BeforeLogin'
 import Register from './pages/beforeLogin/Register'
 import ForgotPassword from './pages/beforeLogin/ForgotPassword'

@@ -12,6 +12,18 @@ export const getUsers = async () => {
     }
 }
 
+
+export const addUser = async (data) => {
+    try {
+        const response = await clientJwt.post(`${process.env.REACT_APP_APIURL}/v1/users/`, data)
+        return response
+    } catch (error) {
+        if (error.response.status === 401) {
+            handleLogout()
+        }
+    }
+}
+
 export const deleteUser = async (id) => {
     try {
         const response = await clientJwt.delete(`${process.env.REACT_APP_APIURL}/v1/users/` + id)

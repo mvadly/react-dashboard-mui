@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import Dashboard from '../../pages/dashboard/Dashboard';
-import UserManagement from '../../pages/userManagement/UserManagement';
+import Dashboard from '../../pages/dashboard';
+import UserManagement from '../../pages/userManagement';
 import AddUser from '../../pages/userManagement/Add';
 import User from '../../pages/userManagement/User';
 import NotFound from '../../pages/notfound';
-import Topbar from '../header/Topbar';
+import Topbar from '../header';
 import { useEffect } from "react";
+import Buyer from "../../pages/buyer";
 const Content = () => {
     
     return (
@@ -21,6 +22,7 @@ const Content = () => {
                         <Route path="/user" element={<User />} />
                         <Route path="/users/add" element={<AddUser />} />
                         <Route path="/users/edit/:id" element={<AddUser />} />
+                        <Route path="/buyer" element={<Buyer />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </div>

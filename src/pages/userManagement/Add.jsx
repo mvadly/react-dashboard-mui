@@ -6,31 +6,23 @@ import SaveIcon from '@mui/icons-material/Save';
 import GroupIcon from '@mui/icons-material/Group';
 import { Body, Title } from "../../components/Content"
 import { useNavigate, useParams } from 'react-router-dom'
+import { addUser } from '../../services/user';
 
 const axios = require('axios');
 
-const Add = ({ fullnameF, usernameF }) => {
+const Add = () => {
     const [loading, setLoading] = useState(false)
-    const [fullname, setFullname] = useState(fullnameF !== "" ? fullnameF : "")
-    const [username, setUsername] = useState(usernameF !== "" ? usernameF : "")
+    const [fullname, setFullname] = useState("")
+    const [username, setUsername] = useState("")
     const { id } = useParams();
     let nav = useNavigate();
 
     console.log("id:", id)
 
-    async function postUserSave() {
-        try {
-            await axios.post(`${process.env.REACT_APP_APIURL}/v1/users`, {
-                fullname: fullname,
-                username: username
-            });
-            setLoading(false)
-            // nav("/users")
-            window.location.reload()
-        } catch (error) {
-            console.error(error);
-            setLoading(false)
-        }
+    function postUserSave() {
+        addUser({ fullname: fullname, username: username }).then(function (res) {
+            console.log(res)
+        })
     }
 
     async function postUserUpdate() {
@@ -74,7 +66,7 @@ const Add = ({ fullnameF, usernameF }) => {
                                 value={fullname}
                                 onChange={(e) => setFullname(e.target.value)} />
                         </Grid>
-                        
+
                         <Grid item xs={12} md={5}>
                             <TextField
                                 fullWidth

@@ -1,0 +1,16 @@
+  
+  .body-login{
+    background: linear-gradient(320.15deg, #00549E 20.54%, #0063AA 35.57%, #0071B5 55.6%, #0080BF 76.99%, #008FC9 94.29%);
+    height:100vh !important;
+  }
+
+  .pari-logo img {
+    width:250px;
+  }
+
+@media screen and (max-width: 576px){
+    .pari-logo img{
+        width:200px;
+    }
+    
+}

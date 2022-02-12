@@ -5,8 +5,8 @@ import { useState } from "react";
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import { handleLogout } from "../../util/actions";
-import { getJwt } from "../../util/jwt"
+import { handleLogout } from "../../../util/actions";
+import { getJwt } from "../../../util/jwt"
 
 const Topbar = () => {
     const profile = getJwt("Data")

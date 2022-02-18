@@ -30,7 +30,6 @@ export const getJwtSecond = () => {
     const now = new Date().getTime()
     const exp = getJwt("exp") * 1000
     const result = exp - now
-    console.log(now, exp, result)
     return result
 
 }

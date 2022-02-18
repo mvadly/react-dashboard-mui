@@ -10,12 +10,12 @@ const UserManagement = () => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
-    const [dataPage, setDataPage] = useState(6)
+    const [dataPage, setDataPage] = useState(2)
     document.title = "User Management"
 
     useEffect(() => {
         setLoading(true)
-        getUsers().then(function(res){
+        getUsers().then(function (res) {
             setData(res.data.result)
         })
         setLoading(false)
@@ -29,7 +29,7 @@ const UserManagement = () => {
     const paginate = (pageNumber) => { setCurrentPage(pageNumber) }
 
     function _delete(id) {
-        deleteUser(id).then(function(res){
+        deleteUser(id).then(function (res) {
             console.log(res)
         })
     }
@@ -60,11 +60,11 @@ const UserManagement = () => {
                                                 <Link
                                                     to={`/users/edit/${index.id}`}
                                                     className="text-yellow-500 mr-3"
-                                                    // onClick={() => {
-                                                    //     setAddForm(" / Edit");
-                                                    //     setForm(<AddUserManagement id={index.id} usernameF={index.username} fullnameF={index.fullname} />)
-                                                    // }}
-                                                    >
+                                                // onClick={() => {
+                                                //     setAddForm(" / Edit");
+                                                //     setForm(<AddUserManagement id={index.id} usernameF={index.username} fullnameF={index.fullname} />)
+                                                // }}
+                                                >
                                                     Edit
                                                 </Link>
 
@@ -83,7 +83,9 @@ const UserManagement = () => {
                         })}
 
                     </Grid>
+                    
                     <Pagination
+                        currentPage={currentPage}
                         dataPage={dataPage}
                         totalData={data.length}
                         paginate={paginate} />

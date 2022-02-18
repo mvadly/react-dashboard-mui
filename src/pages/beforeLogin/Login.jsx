@@ -2,7 +2,7 @@ import { TextField, Alert, Button, InputAdornment, IconButton } from "@mui/mater
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useState } from "react";
 import { expiredStorage } from "../../util/expiredStorage";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { authLogin } from "../../services/login";
 import { PasswordOutlined, Visibility, VisibilityOff } from "@mui/icons-material";
 
@@ -16,6 +16,7 @@ const Login = () => {
         password: ""
     })
     const [vpass, setVpass] = useState(false)
+    const navigate = useNavigate()
 
     const handleLogin = (event) => {
         event.preventDefault()
@@ -25,6 +26,7 @@ const Login = () => {
             setLoading(false)
             if (response.status === 200) {
                 expiredStorage.setItem("token", response.data.token, 3600)
+                // navigate("/dashboard")
                 window.location.reload()
             } else {
                 setIsError(true)

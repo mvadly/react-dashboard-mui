@@ -17,3 +17,11 @@ export const clientJwt = axios.create({
         "Content-Type": "json"
     },
 });
+
+export const clientFormJWT = axios.create({
+    baseURL: `${process.env.REACT_APP_APIURL}`,
+    headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "multipart/form-data"
+    },
+});
